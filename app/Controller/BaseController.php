@@ -16,7 +16,7 @@ abstract class BaseController
 
         $method = 'execute' . ucfirst($action);
         if(!is_callable([$this, $method])){
-            throw new \RuntimeException("L'action '.$method.' n\'est pas définie sur ce module");
+            throw new \RuntimeException("L'action $method n'est pas définie sur ce module");
         }
         $this->$method();
     }

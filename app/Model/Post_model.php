@@ -4,7 +4,7 @@ namespace Model;
 
 use Entity\Posts;
 
-class Post_model extends PDOFactory
+class Post_model extends DBManager
 {
 
     public function getAllPosts(int $number = null): array

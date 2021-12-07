@@ -4,7 +4,7 @@ namespace Model;
 
 use Entity\Users;
 
-class User_model extends PDOFactory
+class User_model extends DBManager
 {
 
     public function getAllUsers(){

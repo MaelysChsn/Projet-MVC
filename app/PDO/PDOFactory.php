@@ -5,16 +5,11 @@ namespace PDO;
 
 class PDOFactory
 {
-
-    const USER = 'user';
-    const PASSWORD = 'password';
-    const HOST = 'localhost';
-    const DBNAME = 'db';
-
-    static public function getMysqlConnexion () {
+    public static function getMysqlConnexion () {
         try
         {
-            $db = new PDO ('mysql:host=' . PDOFactory::HOST . ';dbname=' . PDOFactory::DBNAME , PDOFactory::USER , PDOFactory::PASSWORD);
+            //PDO est dans le namespace racine 
+            $db = new \PDO('mysql:host=localhost;dbname=db', 'user', 'password');
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $db;
         } catch (Exception $e) {

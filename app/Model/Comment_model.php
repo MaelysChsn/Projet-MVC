@@ -4,7 +4,7 @@ namespace Model;
 
 use Entity\Comments;
 
-class Comments_model extends PDOFactory
+class Comments_model extends DBManager
 {
 
     public function getAllComments(){
