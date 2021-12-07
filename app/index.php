@@ -1,6 +1,7 @@
 <?php
 
-require './Route/route.php';
+require_once('Config/autoload.php');
+
 use Route\Router;
 
 $router = new Router();

@@ -6,7 +6,7 @@ use Model\Post_model;
 /**
  *
  */
-class Post_controller extends BaseController
+class PostController extends BaseController
 {
     public function showIndex(int $number = 5){
         $model = new Post_model();
