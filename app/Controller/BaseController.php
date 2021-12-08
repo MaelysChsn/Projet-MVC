@@ -21,7 +21,7 @@ abstract class BaseController
         $this->$method();
     }
 
-    public function render(string $title, vars $array, string $view){
+    public function render(string $title, array $vars, string $view){
         $view =  $this->viewDir . $view .'.php';
         ob_start();
         require $view;

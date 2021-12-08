@@ -4,7 +4,7 @@
 
 <?php
 
-    foreach ($var as $article) :
+    foreach ($vars as $article) :
     ?>
     <div class="">
         <h2><?= $article->getTitle(); ?></h2>
@@ -12,7 +12,7 @@
         <a href="/article/<?= $article->getId(); ?>">Lire plus</a>
     </div>
 
-
-    <?php
+<?php
+    endforeach;
 
 ?>
