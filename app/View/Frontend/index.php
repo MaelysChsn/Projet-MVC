@@ -1,32 +1,20 @@
-
-
-<h1>Home page</h1>
-
-
-
-
-
+<h1>Nos articles</h1>
+<div class="main-container" style="max-width: 1230px; margin: 50px auto;">
   <div class="row mb-2">
       <?php
       foreach ($vars as $article) :
       ?>
-      <div class="">
-          <h2><?= $article->getTitle(); ?></h2>
-          <p><?= substr($article->getContent(), 0, 200); ?></p>
-          <a href="/article/<?= $article->getId(); ?>">Lire plus</a>
-      </div>
         <div class="col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-              <strong class="d-inline-block mb-2 text-primary">World</strong>
+              <strong class="d-inline-block mb-2 text-primary">Post</strong>
               <h3 class="mb-0"><?= $article->getTitle(); ?></h3>
               <div class="mb-1 text-muted"><?= $article->getDatetime(); ?></div>
-              <p class="card-text mb-auto"><?= substr($article->getContent(), 0, 200); ?>...</p>
-              <a href="/article/<?= $article->getId(); ?>" class="stretched-link">Lire plus</a>
+              <p class="card-text mb-auto"><?= substr($article->getContent(), 0, 150); ?>...</p>
+              <a class="btn btn-outline-primary" href="/article/<?= $article->getId(); ?>">Lire plus</a>
             </div>
             <div class="col-auto d-none d-lg-block">
-              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+              <img src="https://picsum.photos/200/300?random=2">
             </div>
           </div>
         </div>
@@ -34,5 +22,5 @@
         endforeach;
 
     ?>
-
   </div>
+</div>

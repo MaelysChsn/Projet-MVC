@@ -12,6 +12,18 @@ class PostController extends BaseController
         $index = $model->getAllPosts($number);
         return $this->render('Homepage', $index, 'Frontend/index');
     }
+
+    public function executeShow(){
+        $model = new Post_model();
+        $article = $model->getPostByID($this->params['id']);
+
+        if(!$article){
+            header('Location: /');
+            exit();
+        }
+
+        return $this->render($article->getTitle(), ['article' => $article], 'Frontend/article');
+    }
 }
 
 
