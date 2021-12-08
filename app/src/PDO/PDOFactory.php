@@ -1,6 +1,6 @@
 <?php
 
-namespace PDO;
+namespace App\PDO;
 
 
 class PDOFactory

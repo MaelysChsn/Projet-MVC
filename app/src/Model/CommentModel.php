@@ -1,10 +1,10 @@
 <?php
 
-namespace Model;
+namespace App\Model;
 
-use Entity\Comments;
+use App\Entity\Comments;
 
-class Comments_model extends DBManager
+class CommentsModel extends DBManager
 {
 
     public function getAllComments(){

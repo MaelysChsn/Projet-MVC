@@ -1,7 +1,7 @@
 <?php
-namespace Model;
+namespace App\Model;
 
-use PDO\PDOFactory;
+use App\PDO\PDOFactory;
 
 abstract class DBManager{
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 /**
  *
  */
 abstract class BaseController
 {
     protected $params;
-    protected $template = __DIR__ . './../View/template.php';
-    protected $viewDir = __DIR__ . './../View/';
+    protected $template = './View/template.php';
+    protected $viewDir = './View/';
 
 
     public function __construct(string $action, array $params = []){

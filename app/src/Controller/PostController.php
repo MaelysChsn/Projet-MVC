@@ -1,20 +1,20 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
-use Model\Post_model;
+use App\Model\PostModel;
 
 
 class PostController extends BaseController
 {
     public function executeIndex(int $number = 2){
-        $model = new Post_model();
+        $model = new PostModel();
         $index = $model->getAllPosts($number);
         return $this->render('Homepage', $index, 'Frontend/index');
     }
 
     public function executeShow(){
-        $model = new Post_model();
+        $model = new PostModel();
         $article = $model->getPostByID($this->params['id']);
 
         if(!$article){

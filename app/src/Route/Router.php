@@ -1,6 +1,6 @@
 <?php
 
-namespace Route;
+namespace App\Route;
 
 class Router
 {
@@ -13,7 +13,7 @@ class Router
 
         foreach ($routes as $route) {
             if ($path === $route->getAttribute('p')) {
-                $controllerClass = 'Controller\\'. $route->getAttribute('controller');
+                $controllerClass = 'App\\Controller\\'. $route->getAttribute('controller');
                 $action = $route->getAttribute('action');
                 $params = [];
 
@@ -23,8 +23,6 @@ class Router
                         $params[$key] = $_GET[$key];
                     }
                 }
-
-                var_dump($params);
                 return new $controllerClass($action, $params);
             }
         }

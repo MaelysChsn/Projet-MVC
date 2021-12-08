@@ -1,10 +1,10 @@
 <?php
 
-namespace Model;
+namespace App\Model;
 
-use Entity\Users;
+use App\Entity\Users;
 
-class User_model extends DBManager
+class UserModel extends DBManager
 {
 
     public function getAllUsers(){
