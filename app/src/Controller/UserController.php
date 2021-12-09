@@ -127,7 +127,7 @@ class UserController extends BaseController
             }
             if(empty($data['firstnameError']) && empty($data['lastnameError']) && empty($data['emailError']) && empty($data['passwordError'])){
                 if($modelUser->register($data)){
-                    header('Location: /');
+                    header('Location: /login');
                 }else{
                     die('Oups ... Something went wrong please try again !');
                 };
@@ -171,7 +171,8 @@ class UserController extends BaseController
         }
         $_SESSION['is_admin'] = $isAdmin;
 
-        header('Location: /show');
+
+        header('Location: /');
     }
 
     public function executeLogout(){

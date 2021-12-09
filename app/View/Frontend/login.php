@@ -1,6 +1,6 @@
 <div class="main-container" style="max-width: 80%; margin: 50px auto;">
     <h2>Login</h2>
-    <form action="/" method="POST">
+    <form action="/login" method="POST">
       <div class="form-group">
         <label for="inputEmail">Email</label>
         <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter Email">

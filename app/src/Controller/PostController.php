@@ -23,7 +23,7 @@ class PostController extends BaseController
         $comments = $modelComment->getCommentByPostID($this->params['id']);
 
         if(!$article){
-            header('Location: /show');
+            header('Location: /');
             exit();
         }
 
@@ -63,7 +63,7 @@ class PostController extends BaseController
 
             if(empty($data['contentError']) && empty($data['titleError'])){
                 if($modelPost->addPost($data)){
-                    header('Location: /show');
+                    header('Location: /');
                 }else{
                     die('Oups ... Something went wrong please try again !');
                 };
@@ -109,7 +109,7 @@ class PostController extends BaseController
 
             if(empty($data['contentError']) && empty($data['titleError'])){
                 if($modelPost->updatePost($data)){
-                    header('Location: /show');
+                    header('Location: /');
                 }else{
                     die('Oups ... Something went wrong please try again !');
                 };
@@ -139,7 +139,7 @@ class PostController extends BaseController
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             if($modelPost->deletePost($this->params['id'])){
-                header('Location: /show');
+                header('Location: /');
             }else{
                 die("Cannot delete this post !");
             }
