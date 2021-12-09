@@ -43,15 +43,21 @@ class UserController extends BaseController
                 $data['passwordError'] = 'Your password cannot be empty !';
             }
 
-            if(!empty($data['email']) && !empty($data['password'])){
+            if(empty($data['emailError']) && empty($data['passwordError'])){
                 $loggedUser = $modelUser->login($data['email'], $data['password']);
+
                 if($loggedUser){
-                    $this->createSessionUser($loggedUser);
+                    session_start();
+                    $_SESSION['user_id'] = "1" ;
+                    $_SESSION['firstname'] = 'jean';
+                    $_SESSION['lastname'] = 'mama5252';
+                    $_SESSION['email'] = 'mama5252';
                     header('Location: /user');
                 }else{
                     $data['passwordError'] = 'Wrong password, try again !';
                 }
             }else{
+
                 return $this->render('Wrong Login', $data , 'Frontend/login');
 
             }
@@ -120,7 +126,7 @@ class UserController extends BaseController
             }elseif (strlen($data['password']) < 7) {
                 $data['passwordError'] = 'Your password must have at least 8 character!';
             }
-            if(!empty($data['firstname']) && !empty($data['lastname']) && !empty($data['email']) && !empty($data['password'])){
+            if(empty($data['firstnameError']) && empty($data['lastnameError']) && empty($data['emailError']) && empty($data['passwordError'])){
                 if($modelUser->register($data)){
                     var_dump($data);
                     header('Location: /');
@@ -135,12 +141,12 @@ class UserController extends BaseController
         return $this->render('Register', $data , 'Frontend/register');
     }
 
-    public function createSessionUser($user){
+    public function createSessionUser($data){
         session_start();
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['firstname'] = $user->firstname;
-        $_SESSION['lastname'] = $user->lastname;
-        $_SESSION['email'] = $user->email;
+        $_SESSION['user_id'] = "1" ;
+        $_SESSION['firstname'] = $data['firstname'];
+        $_SESSION['lastname'] = $data['lastname'];
+        $_SESSION['email'] = $data['email'];
     }
 }
 

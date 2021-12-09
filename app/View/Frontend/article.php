@@ -1,12 +1,17 @@
-<div class="main-container" style="max-width: 1230px; margin: 50px auto;">
+<div class="main-container" style="max-width: 80%; margin: 50px auto;">
   <div class="row mb-2">
-      <div class="mb-3">
-        <a href="/updatepost" type="button" class="btn btn-primary">Update</a>
-        <a type="button" class="btn btn-outline-danger">Delete</a>
-      </div>
+
       <?php
         foreach ($vars as $article):
           ?>
+          <div class="mb-3" style="width:100%;display:flex; flex-direction: row; justify-content: flex-end;">
+            <a href="/update" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
+            <form class="" action="/delete/<?= $article->getId();?>" method="POST">
+              <input type="submit" class="btn btn-outline-danger" value="Delete">
+            </form>
+
+          </div>
+
             <article class="blog-post">
               <h2 class="blog-post-title"><?= $article->getTitle(); ?></h2>
               <p class="blog-post-meta"><?= $article->getCurrentDate(); ?>

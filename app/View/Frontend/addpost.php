@@ -1,5 +1,5 @@
 
-<div class="main-container" style="max-width: 1230px; margin: 50px auto;">
+<div class="main-container" style="max-width: 80%; margin: 50px auto;">
    <h2>New post</h2>
    <form action="/addpost" method="POST">
      <div class="form-group" style="margin: 30px auto;">

@@ -31,9 +31,10 @@ class UserModel extends DBManager
     }
 
     public function login(string $email, string $password){
-        $query = $this->db->prepare('SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1');
+        $query = $this->db->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
         $query->bindValue(':email', $email);
-        $query->bindValue(':password', $password);
+        $query->bindValue(':password', $email);
+        $query->execute();
 
         if($query->execute()){
             return true;

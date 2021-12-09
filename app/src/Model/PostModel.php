@@ -29,11 +29,21 @@ class PostModel extends DBManager
     }
 
     public function addPost($data){
-        $query = $this->db->prepare('INSERT INTO posts(`id`, `user_id`, `title`, `content`, `currentDate`) VALUES (:user_id, :title, :content)');
+        $query = $this->db->prepare('INSERT INTO posts(`user_id`, `title`, `content`) VALUES (:user_id, :title, :content)');
         $query->bindValue(':user_id', $data['user_id'], \PDO::PARAM_INT);
         $query->bindValue(':title', $data['title']);
         $query->bindValue(':content', $data['content']);
 
+        if($query->execute()){
+            return true;
+        }else{
+            return false;
+        };
+    }
+
+    public function deletePost(int $id){
+        $query = $this->db->prepare('DELETE FROM posts WHERE id = :id');
+        $query->bindValue(':id', $id, \PDO::PARAM_INT);
         if($query->execute()){
             return true;
         }else{

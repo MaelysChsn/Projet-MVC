@@ -8,6 +8,7 @@ use App\Model\CommentModel;
 
 class PostController extends BaseController
 {
+        //SHOW POST
     public function executeIndex(int $number = null){
         $model = new PostModel();
         $index = $model->getAllPosts($number);
@@ -22,13 +23,15 @@ class PostController extends BaseController
         $comments = $modelComment->getCommentByPostID($this->params['id']);
 
         if(!$article){
-            header('Location: /');
+            header('Location: /show');
             exit();
         }
 
         return $this->render($article->getTitle(), ['article' => $article], 'Frontend/article');
     }
 
+
+    //ADD POST
     public function executeAddPost(){
 
         $modelPost = new PostModel();
@@ -60,7 +63,7 @@ class PostController extends BaseController
 
             if(empty($data['contentError']) && empty($data['titleError'])){
                 if($modelPost->addPost($data)){
-                    header('Location: /');
+                    header('Location: /show');
                 }else{
                     die('Oups ... Something went wrong please try again !');
                 };
@@ -75,11 +78,36 @@ class PostController extends BaseController
 
     }
 
+    //UPDATE POST
     public function executeUpdatePost(){
         $modelPost = new PostModel();
 
 
         return $this->render("Update Post", [] , 'Frontend/update');
+    }
+
+    //DELETE POST
+    public function executeDeletePost(){
+        $modelPost = new PostModel();
+        $post = $modelPost->getPostByID($this->params['id']);
+
+        $data = [
+            'post' => $post,
+    		'title' => '',
+    		'content' => '',
+            'user_id' => '',
+            'titleError' => '',
+    		'contentError' => '',
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            if($modelPost->deletePost($this->params['id'])){
+                header('Location: /show');
+            }else{
+                die("Cannot delete this post !");
+            }
+        }
     }
 
 }

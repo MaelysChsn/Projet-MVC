@@ -1,4 +1,5 @@
-<div class="main-container" style="max-width: 1230px; margin: 50px auto;">
+<div class="main-container" style="max-width: 80%; margin: 50px auto;">
+    <?php var_dump($data); ?>
     <h2>Login</h2>
     <form action="/register" method="POST">
       <div class="form-group">
@@ -9,7 +10,9 @@
       <div class="form-group">
         <label for="inputLastname">Lastname</label>
         <input type="text" class="form-control" id="inputLastname" name="lastname" placeholder="Enter Lastname">
-        <div class="invalid-feedback"><?php echo $data['lastnameError']?></div>
+        <div class="">
+            <p>
+            <?php echo $data['lastnameError']; ?></p></div>
       </div>
       <div class="form-group">
         <label for="inputEmail">Email</label>
