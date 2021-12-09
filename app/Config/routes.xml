@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <routes>
-    <route p="" controller="PostController" action="index"/>
+    <!-- ARTICLE SHOW/ADD/UPDATE/DELETE -->
+    <route p="show" controller="PostController" action="index"/>
     <route p="article" controller="PostController" action="show" params="id"/>
+    <route p="addpost" controller="PostController" action="addPost"/>
+    <route p="updatepost" controller="PostController" action="updatePost"/>
+
+    <!-- USER SHOW/LOGIN/REGISTER -->
+    <route p="user" controller="UserController" action="user"/>
+    <route p="" controller="UserController" action="login"/>
+    <route p="register" controller="UserController" action="register"/>
+
 </routes>

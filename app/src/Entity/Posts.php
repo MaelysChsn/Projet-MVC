@@ -11,7 +11,7 @@ class Posts
     private $user_id;
     private $title;
     private $content;
-    private $datetime;
+    private $currentDate;
 
 
     /**
@@ -115,9 +115,9 @@ class Posts
      *
      * @return mixed
      */
-    public function getDatetime()
+    public function getCurrentDate()
     {
-        return $this->datetime;
+        return $this->currentDate;
     }
 
     /**
@@ -127,9 +127,9 @@ class Posts
      *
      * @return self
      */
-    public function setDatetime($datetime)
+    public function setCurrentDate($currentDate)
     {
-        $this->datetime = $datetime;
+        $this->currentDate = $currentDate;
 
         return $this;
     }

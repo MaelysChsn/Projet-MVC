@@ -4,13 +4,13 @@ namespace App\Model;
 
 use App\Entity\Comments;
 
-class CommentsModel extends DBManager
+class CommentModel extends DBManager
 {
 
     public function getAllComments(){
         $query = $this->db->prepare('SELECT * FROM comments ORDER BY id DESC');
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Comments');
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Comments');
         return $query->fetchAll();
     }
 
@@ -18,7 +18,7 @@ class CommentsModel extends DBManager
         $query = $this->db->prepare('SELECT * FROM comments WHERE id = :id ORDER BY id DESC');
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Users');
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Comments');
         return $query->fetch();
     }
 
@@ -26,7 +26,7 @@ class CommentsModel extends DBManager
         $query = $this->db->prepare('SELECT * FROM comments WHERE user_id = :id ORDER BY id DESC');
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Users');
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Comments');
         return $query->fetch();
     }
 
@@ -34,7 +34,7 @@ class CommentsModel extends DBManager
         $query = $this->db->prepare('SELECT * FROM comments WHERE post_id = :id ORDER BY id DESC');
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Users');
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Comments');
         return $query->fetch();
     }
 

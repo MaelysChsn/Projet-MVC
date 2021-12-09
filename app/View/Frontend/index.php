@@ -1,5 +1,5 @@
-<h1>Nos articles</h1>
 <div class="main-container" style="max-width: 1230px; margin: 50px auto;">
+  <h2>Our articles</h2>
   <div class="row mb-2">
       <?php
       foreach ($vars as $article) :
@@ -9,7 +9,7 @@
             <div class="col p-4 d-flex flex-column position-static">
               <strong class="d-inline-block mb-2 text-primary">Post</strong>
               <h3 class="mb-0"><?= $article->getTitle(); ?></h3>
-              <div class="mb-1 text-muted"><?= $article->getDatetime(); ?></div>
+              <div class="mb-1 text-muted"><?= $article->getCurrentDate(); ?></div>
               <p class="card-text mb-auto"><?= substr($article->getContent(), 0, 150); ?>...</p>
               <a class="btn btn-outline-primary" href="/article/<?= $article->getId(); ?>">Lire plus</a>
             </div>
