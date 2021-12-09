@@ -21,7 +21,7 @@
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/show" class="nav-link px-2 text-secondary">Home</a></li>
-            <li><a href="/addpost" class="nav-link px-2 text-white">Write Posts</a></li>
+            <li><a href="/add" class="nav-link px-2 text-white">Write Posts</a></li>
             <li><a href="/user" class="nav-link px-2 text-white">Users</a></li>
           </ul>
 

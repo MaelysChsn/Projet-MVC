@@ -11,7 +11,7 @@
      </div>
      <div class="form-group" style="margin: 30px auto;">
        <label for="InputContent">Post</label>
-       <textarea type="text" class="form-control" name="content" id="InputContent" placeholder="Your content"></textarea>
+       <textarea type="text" class="form-control" name="content" id="InputContent" placeholder="Your content" style="min-height: 30vh;"></textarea>
        <span class="invalid-feedback">
          <?php echo $data['contentError']; ?>
        </span>

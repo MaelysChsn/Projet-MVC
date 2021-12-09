@@ -1,11 +1,11 @@
 <div class="main-container" style="max-width: 80%; margin: 50px auto;">
   <div class="row mb-2">
-
+    <a href="/show" type="button" class="btn btn-warning" style="width:auto;margin:0px 20px;">Return</a>
       <?php
         foreach ($vars as $article):
           ?>
           <div class="mb-3" style="width:100%;display:flex; flex-direction: row; justify-content: flex-end;">
-            <a href="/update" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
+            <a href="/update/<?= $article->getId();?>" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
             <form class="" action="/delete/<?= $article->getId();?>" method="POST">
               <input type="submit" class="btn btn-outline-danger" value="Delete">
             </form>

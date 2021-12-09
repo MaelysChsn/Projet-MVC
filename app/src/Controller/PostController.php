@@ -69,7 +69,6 @@ class PostController extends BaseController
                 };
             }else{
                 return $this->render('wrong post', $data, 'Frontend/addpost');
-                var_dump($data);
             }
         }
 
@@ -81,9 +80,46 @@ class PostController extends BaseController
     //UPDATE POST
     public function executeUpdatePost(){
         $modelPost = new PostModel();
+        $post = $modelPost->getPostByID($this->params['id']);
+
+        $data = [
+    		'title' => '',
+    		'content' => '',
+            'user_id' => '',
+            'titleError' => '',
+    		'contentError' => '',
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'id' => $this->params['id'],
+        		'title' => trim($_POST['title']),
+        		'content' => trim($_POST['content']),
+                'user_id' => 1,
+                'titleError' => '',
+        		'contentError' => '',
+            ];
+            if(empty($data['title'])){
+                $data['titleError'] = 'Your title cannot be empty !';
+            }
+            else if(empty($data['content'])){
+                $data['contentError'] = 'Your post cannot be empty !';
+            }
+
+            if(empty($data['contentError']) && empty($data['titleError'])){
+                if($modelPost->updatePost($data)){
+                    header('Location: /show');
+                }else{
+                    die('Oups ... Something went wrong please try again !');
+                };
+            }else{
+                return $this->render('Wrong update', $data, 'Frontend/update');
+            }
+        }
 
 
-        return $this->render("Update Post", [] , 'Frontend/update');
+        return $this->render("Update Post", ['post' => $post], 'Frontend/update');
     }
 
     //DELETE POST

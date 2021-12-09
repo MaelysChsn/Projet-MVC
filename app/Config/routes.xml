@@ -3,8 +3,8 @@
     <!-- ARTICLE SHOW/ADD/UPDATE/DELETE -->
     <route p="show" controller="PostController" action="index"/>
     <route p="article" controller="PostController" action="show" params="id"/>
-    <route p="addpost" controller="PostController" action="addPost"/>
-    <route p="updatepost" controller="PostController" action="updatePost"/>
+    <route p="add" controller="PostController" action="addPost"/>
+    <route p="update" controller="PostController" action="updatePost" params="id"/>
     <route p="delete" controller="PostController" action="deletePost" params="id"/>
 
     <!-- USER SHOW/LOGIN/REGISTER -->
