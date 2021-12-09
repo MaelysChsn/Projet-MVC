@@ -1,7 +1,7 @@
 
 <div class="main-container" style="max-width: 80%; margin: 50px auto;">
    <h2>New post</h2>
-   <form action="/addpost" method="POST">
+   <form action="/add" method="POST">
      <div class="form-group" style="margin: 30px auto;">
        <label for="inputTitle">Title</label>
        <input type="text" class="form-control" name="title" id="inputTitle" aria-describedby="titleHelp" placeholder="Enter title">

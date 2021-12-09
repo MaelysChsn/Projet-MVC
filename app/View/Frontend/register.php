@@ -1,6 +1,5 @@
 <div class="main-container" style="max-width: 80%; margin: 50px auto;">
-    <?php var_dump($data); ?>
-    <h2>Login</h2>
+    <h2>Register</h2>
     <form action="/register" method="POST">
       <div class="form-group">
         <label for="inputFirstname">Firstname</label>
@@ -26,7 +25,7 @@
       </div>
       <div class="form-group">
         <label for="inputAdmin">Admin</label>
-        <input class="form-check-input" type="checkbox" id="inputAdmin" value="admin">
+        <input class="form-check-input" type="checkbox" name="isAdmin" id="inputAdmin" value="1">
       </div>
       <button type="submit" class="btn btn-primary">Register</button>
     </form>

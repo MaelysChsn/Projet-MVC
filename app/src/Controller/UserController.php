@@ -13,6 +13,8 @@ class UserController extends BaseController
         return $this->render('User List', $users, 'Frontend/user');
     }
 
+
+
     public function executeLogin(){
         $modelUser = new UserModel();
         $data = [
@@ -46,20 +48,11 @@ class UserController extends BaseController
             if(empty($data['emailError']) && empty($data['passwordError'])){
                 $loggedUser = $modelUser->login($data['email'], $data['password']);
 
-                if($loggedUser){
-                    session_start();
-                    $_SESSION['user_id'] = "1" ;
-                    $_SESSION['firstname'] = 'jean';
-                    $_SESSION['lastname'] = 'mama5252';
-                    $_SESSION['email'] = 'mama5252';
-                    header('Location: /user');
-                }else{
-                    $data['passwordError'] = 'Wrong password, try again !';
+                if(count($loggedUser) > 0){
+                    $this->createSessionUser($loggedUser);
                 }
             }else{
-
                 return $this->render('Wrong Login', $data , 'Frontend/login');
-
             }
         }
         return $this->render('Login', $data , 'Frontend/login');
@@ -81,12 +74,19 @@ class UserController extends BaseController
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if (isset($_POST['isAdmin'])) {
+                $isAdmin = 1;
+            }else{
+                $isAdmin = 0;
+            }
+
             $data = [
         		'firstname' => trim($_POST['firstname']),
         		'lastname' => trim($_POST['lastname']),
                 'password' => trim($_POST['password']),
                 'email' => trim($_POST['email']),
-                'is_admin' => trim($_POST['is_admin']),
+                'is_admin' => $isAdmin,
                 'fistnameError' => '',
         		'lastnameError' => '',
                 'passwordError' => '',
@@ -94,7 +94,6 @@ class UserController extends BaseController
             ];
 
             $textValidation = "/^[a-zA-Z0-9]*$/";
-
             //Firstname validation
             if(empty($data['firstname'])){
                 $data['fistnameError'] = 'Your name cannot be empty !';
@@ -128,7 +127,6 @@ class UserController extends BaseController
             }
             if(empty($data['firstnameError']) && empty($data['lastnameError']) && empty($data['emailError']) && empty($data['passwordError'])){
                 if($modelUser->register($data)){
-                    var_dump($data);
                     header('Location: /');
                 }else{
                     die('Oups ... Something went wrong please try again !');
@@ -141,12 +139,49 @@ class UserController extends BaseController
         return $this->render('Register', $data , 'Frontend/register');
     }
 
+    public function executeDelete(){
+        $modelUser = new UserModel();
+        $user = $modelUser->getUserByID($this->params['id']);
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            if($modelUser->deleteUser($this->params['id'])){
+                header('Location: /user');
+            }else{
+                die("Cannot delete this user !");
+            }
+        }
+    }
+
+    public function executeUpdate(){
+        $modelUser = new UserModel();
+        $user = $modelUser->getUserByID($this->params['id']);
+        return $this->render('Update User', ['user' => $user], 'Frontend/updateUser');
+    }
+
     public function createSessionUser($data){
-        session_start();
-        $_SESSION['user_id'] = "1" ;
+        $_SESSION['user_id'] = $data['id'];
         $_SESSION['firstname'] = $data['firstname'];
         $_SESSION['lastname'] = $data['lastname'];
         $_SESSION['email'] = $data['email'];
+
+        $isAdmin = false;
+        if($data['is_admin'] === "1"){
+            $isAdmin = true;
+        }
+        $_SESSION['is_admin'] = $isAdmin;
+
+        header('Location: /show');
+    }
+
+    public function executeLogout(){
+        unset($_SESSION['user_id']);
+        unset($_SESSION['firstname']);
+        unset($_SESSION['lastname']);
+        unset($_SESSION['email']);
+        unset($_SESSION['is_admin']);
+
+        header('Location: /');
     }
 }
 

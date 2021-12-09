@@ -5,11 +5,16 @@
         foreach ($vars as $article):
           ?>
           <div class="mb-3" style="width:100%;display:flex; flex-direction: row; justify-content: flex-end;">
-            <a href="/update/<?= $article->getId();?>" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
-            <form class="" action="/delete/<?= $article->getId();?>" method="POST">
-              <input type="submit" class="btn btn-outline-danger" value="Delete">
-            </form>
 
+            <?php if($_SESSION['is_admin']) :  ?>
+              <a href="/update/<?= $article->getId();?>" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
+              <form class="" action="/delete/<?= $article->getId();?>" method="POST">
+                <input type="submit" class="btn btn-outline-danger" value="Delete">
+              </form>
+            <?php elseif($_SESSION['user_id'] === $article->getUserId()) :  ?>
+              <a href="/update/<?= $article->getId();?>" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
+
+            <?php endif; ?>
           </div>
 
             <article class="blog-post">

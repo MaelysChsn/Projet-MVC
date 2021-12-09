@@ -1,9 +1,8 @@
 <?php
 
-//require_once('Config/autoload.php');
 require './vendor/autoload.php';
-//require './Route/Router.php';
-//use Route\Router;
+require './src/Session/session_helper.php';
+
 
 $router = new App\Route\Router();
 $router->getController();

@@ -1,7 +1,7 @@
 
 <div class="main-container" style="max-width: 80%; margin: 50px auto;">
    <h2>Update Post</h2>
-   <?php var_dump($post);
+   <?php
    foreach ($vars as $post):
    ?>
      <form action="/update/<?= $post->getID();?>" method="POST">

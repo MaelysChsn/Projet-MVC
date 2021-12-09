@@ -7,10 +7,14 @@
     <route p="update" controller="PostController" action="updatePost" params="id"/>
     <route p="delete" controller="PostController" action="deletePost" params="id"/>
 
-    <!-- USER SHOW/LOGIN/REGISTER -->
+    <!-- USER SHOW/LOGIN/REGISTER/LOGOUT -->
     <route p="user" controller="UserController" action="user"/>
     <route p="" controller="UserController" action="login"/>
     <route p="register" controller="UserController" action="register"/>
+    <route p="updateUser" controller="UserController" action="update" params="id"/>
+    <route p="deleteUser" controller="UserController" action="delete" params="id"/>
+    <route p="logout" controller="UserController" action="logout"/>
+
 
 
 

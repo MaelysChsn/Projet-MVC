@@ -49,7 +49,7 @@ class PostController extends BaseController
             $data = [
         		'title' => trim($_POST['title']),
         		'content' => trim($_POST['content']),
-                'user_id' => 1,
+                'user_id' => $_SESSION['user_id'],
                 'titleError' => '',
         		'contentError' => '',
             ];
@@ -96,7 +96,7 @@ class PostController extends BaseController
                 'id' => $this->params['id'],
         		'title' => trim($_POST['title']),
         		'content' => trim($_POST['content']),
-                'user_id' => 1,
+                'user_id' => $_SESSION['user_id'],
                 'titleError' => '',
         		'contentError' => '',
             ];

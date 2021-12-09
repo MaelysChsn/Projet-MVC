@@ -27,8 +27,13 @@
                 ?>
             </td>
             <td>
-              <button type="button" class="btn btn-primary">Update</button>
-              <button type="button" class="btn btn-outline-danger">Delete</button>
+              <a href="/updateUser/<?= $user->getId();?>" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
+              <?php if($_SESSION['user_id'] !== $user->getId()) :  ?>
+              <form class="" action="/deleteUser/<?= $user->getId();?>" method="POST">
+                <input type="submit" class="btn btn-outline-danger" value="Delete">
+              </form>
+            <?php endif; ?>
+
             </td>
           </tr>
           <?php
