@@ -43,6 +43,7 @@ class PostController extends BaseController
         $data = [
     		'title' => '',
     		'content' => '',
+            'image' => '',
             'user_id' => '',
             'titleError' => '',
     		'contentError' => '',
@@ -50,24 +51,33 @@ class PostController extends BaseController
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $image = $_FILES['image']['name'];
+            $target = "/var/www/html/src/Image/".basename($image);
+
             $data = [
         		'title' => trim($_POST['title']),
         		'content' => trim($_POST['content']),
                 'user_id' => $_SESSION['user_id'],
+                'image' => $image,
                 'titleError' => '',
         		'contentError' => '',
+                'fileError' => '',
             ];
 
             if(empty($data['title'])){
                 $data['titleError'] = 'Your title cannot be empty !';
             }
-            else if(empty($data['content'])){
+            elseif(empty($data['content'])){
                 $data['contentError'] = 'Your post cannot be empty !';
             }
+            // var_dump(__DIR__.'/../../uploads/'. $_FILES["image"]['name']);
 
             if(empty($data['contentError']) && empty($data['titleError'])){
                 if($modelPost->addPost($data)){
-                    header('Location: /');
+                    if(move_uploaded_file($_FILES["image"]["tmp_name"], $target)) {
+                        header('Location: /');
+                    }
                 }else{
                     die('Oups ... Something went wrong please try again !');
                 };

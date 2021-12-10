@@ -315,7 +315,7 @@ class UserController extends BaseController
                     $this->createSessionUser($newUser);
 
 
-                    if($newUser['is_admin'] === "1"){
+                    if($_SESSION['is_admin'] === "1"){
                         header('Location: /user');
                     }else{
                         header('Location: /account/'.$_SESSION['user_id'].'');

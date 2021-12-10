@@ -29,7 +29,7 @@
             <td>
               <a href="/updateUser/<?= $user->getId();?>" type="button" class="btn btn-primary" style="margin:0px 20px;">Update</a>
               <?php if($_SESSION['user_id'] !== $user->getId()) :  ?>
-              <form class="" action="/deleteUser/<?= $user->getId();?>" method="POST">
+              <form class="" action="/deleteUser/<?= $user->getId();?>" method="POST" style="display: contents;">
                 <input type="submit" class="btn btn-outline-danger" value="Delete">
               </form>
             <?php endif; ?>

@@ -14,8 +14,10 @@
 
             <?php endif; ?>
           </div>
-
           <article class="blog-post">
+            <img src="./../src/Image/<?php echo $vars['article']->getImage(); ?>" alt="" style="width: 50%">
+            <br/>
+            <br/>
             <p class="blog-post-meta">Écrit par:
               <?php
                 $users = $vars['modelUser']->getUserByID($vars['article']->getUserId());
@@ -25,6 +27,7 @@
                 }
               ?>
             </p>
+            <br>
             <h2 class="blog-post-title"><?= $vars['article']->getTitle(); ?></h2>
             <p class="blog-post-meta">Le <?= $vars['article']->getCurrentDate(); ?>
             <p><?= $vars['article']-> getContent(); ?><p>

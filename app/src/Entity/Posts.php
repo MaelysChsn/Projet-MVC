@@ -12,6 +12,7 @@ class Posts
     private $title;
     private $content;
     private $currentDate;
+    private $image;
 
 
     /**
@@ -130,6 +131,30 @@ class Posts
     public function setCurrentDate($currentDate)
     {
         $this->currentDate = $currentDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Image
+     *
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of Image
+     *
+     * @param mixed $datetime
+     *
+     * @return self
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }
