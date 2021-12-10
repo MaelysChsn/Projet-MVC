@@ -4,24 +4,22 @@
       <div class="form-group">
         <label for="inputFirstname">Firstname</label>
         <input type="text" class="form-control" id="inputFirstname"  name="firstname" placeholder="Enter Firstname">
-         <div class="invalid-feedback"><?php echo $data['firstnameError']?></div>
+        <p class="invalid" style="color: red; font-weight: bold;"><?= $vars['fistnameError']; ?></p>
       </div>
       <div class="form-group">
         <label for="inputLastname">Lastname</label>
         <input type="text" class="form-control" id="inputLastname" name="lastname" placeholder="Enter Lastname">
-        <div class="">
-            <p>
-            <?php echo $data['lastnameError']; ?></p></div>
-      </div>
+        <p class="invalid" style="color: red; font-weight: bold;"><?= $vars['lastnameError']; ?></p>
       <div class="form-group">
         <label for="inputEmail">Email</label>
         <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter Email">
-        <div class="invalid-feedback"><?php echo $data['emailError']?></div>
+        <p class="invalid" style="color: red; font-weight: bold;"><?= $vars['emailError']; ?></p>
+
       </div>
       <div class="form-group">
         <label for="inputPassword">Password</label>
         <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Enter Password">
-        <div class="invalid-feedback"><?php echo $data['passwordError']?></div>
+        <p class="invalid" style="color: red; font-weight: bold;"><?= $vars['passwordError']; ?></p>
       </div>
       <div class="form-group">
         <label for="inputAdmin">Admin</label>

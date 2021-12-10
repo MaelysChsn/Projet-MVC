@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\PostModel;
 use App\Model\CommentModel;
+use App\Model\UserModel;
 
 
 class PostController extends BaseController
@@ -18,16 +19,19 @@ class PostController extends BaseController
     public function executeShow(){
         $modelPost = new PostModel();
         $modelComment = new CommentModel();
+        $modelUser = new UserModel();
+
 
         $article = $modelPost->getPostByID($this->params['id']);
-        $comments = $modelComment->getCommentByPostID($this->params['id']);
+        $comments = $modelComment->getAllComments($this->params['id']);
+        $users = $modelUser->getAllUsers();
 
         if(!$article){
             header('Location: /');
             exit();
         }
 
-        return $this->render($article->getTitle(), ['article' => $article], 'Frontend/article');
+        return $this->render($article->getTitle(), ['article' => $article, 'comments' => $comments, 'modelUser' => $modelUser], 'Frontend/article');
     }
 
 
@@ -109,7 +113,7 @@ class PostController extends BaseController
 
             if(empty($data['contentError']) && empty($data['titleError'])){
                 if($modelPost->updatePost($data)){
-                    header('Location: /');
+                    header('Location: /article/'.$this->params['id'].'');
                 }else{
                     die('Oups ... Something went wrong please try again !');
                 };

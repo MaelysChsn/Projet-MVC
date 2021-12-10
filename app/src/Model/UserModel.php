@@ -66,7 +66,7 @@ class UserModel extends DBManager
     }
 
     public function updateUser($data){
-        $query = $this->db->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :email, is_admin = :is_admin WHERE id = :id');
+        $query = $this->db->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :password, is_admin = :is_admin WHERE id = :id');
         $query->bindValue(':firstname', $data['firstname'],  \PDO::PARAM_STR);
         $query->bindValue(':lastname', $data['lastname'], \PDO::PARAM_STR);
         $query->bindValue(':email', $data['email'], \PDO::PARAM_STR);

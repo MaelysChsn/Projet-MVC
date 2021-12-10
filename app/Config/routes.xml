@@ -14,6 +14,12 @@
     <route p="updateUser" controller="UserController" action="update" params="id"/>
     <route p="deleteUser" controller="UserController" action="delete" params="id"/>
     <route p="logout" controller="UserController" action="logout"/>
+    <route p="account" controller="UserController" action="updateAccount" params="id"/>
+
+    <!-- USER SHOW/LOGIN/REGISTER/LOGOUT -->
+    <route p="addComment" controller="CommentController" action="add" params="id"/>
+    <route p="deleteComment" controller="CommentController" action="delete" params="id"/>
+
 
 
 

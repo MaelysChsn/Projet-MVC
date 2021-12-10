@@ -20,12 +20,15 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-              <?php if(isset($_SESSION['user_id'])) :  ?>
+            <?php if(isset($_SESSION['user_id'])) :  ?>
                 <li><a href="/add" class="nav-link px-2 text-white">Write Posts</a></li>
-              <?php endif;
-              if($_SESSION['is_admin'] === true ) :  ?>
-                  <li><a href="/user" class="nav-link px-2 text-white">Users</a></li>
-                <?php endif; ?>
+            <?php if($_SESSION['is_admin'] === "1" ) :  ?>
+                    <li><a href="/user" class="nav-link px-2 text-white">Users</a></li>
+                <?php else : ?>
+                    <li><a href="/account/<?php echo $_SESSION['user_id'];?>" class="nav-link px-2 text-white">Account</a></li>
+                  <?php endif;
+            endif; ?>
+
             </ul>
 
 
